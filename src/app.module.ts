@@ -6,6 +6,8 @@ import { CarsModule } from './cars/cars.module';
 import { Cars_Brand } from './cars/car_brand/model/car_brand.model';
 import { Cars_Model } from './cars/car_model/model/car_model.model';
 import { Cars } from './cars/model/cars.model';
+import { Owner } from './owners/model/owner.model';
+import { OwnersModule } from './owners/owners.module';
 
 @Module({
   imports: [
@@ -19,9 +21,10 @@ import { Cars } from './cars/model/cars.model';
       autoLoadModels: true,
       // synchronize: true,
       sync: {force: true},
-      models: [Cars, Cars_Brand, Cars_Model],
+      models: [Cars, Cars_Brand, Cars_Model, Owner],
     }),
-    CarsModule],
+    CarsModule,
+    OwnersModule],
   controllers: [AppController],
   providers: [AppService],
 })
