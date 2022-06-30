@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
+import { Cars } from 'src/cars/model/cars.model';
 import { CreateOwnerDto } from './dto/create-owner.dto';
 import { UpdateOwnerDto } from './dto/update-owner.dto';
 import { Owner } from './model/owner.model';
@@ -17,7 +18,9 @@ export class OwnersService {
   }
 
   findAll() {
-    return this.ownerModel.findAll();
+    return this.ownerModel.findAll({
+      include: [{model: Cars}]
+    });
   }
 
   findOne(id: number) {
