@@ -1,4 +1,6 @@
-import { AllowNull, AutoIncrement, Column, Model, PrimaryKey, Table, Unique } from 'sequelize-typescript';
+import { AllowNull, AutoIncrement, BelongsTo, Column, ForeignKey, HasOne, Model, PrimaryKey, Table, Unique } from 'sequelize-typescript';
+import { Cars_Brand } from '../car_brand/model/car_brand.model';
+import { Cars_Model } from '../car_model/model/car_model.model';
 
 @Table
 export class Cars extends Model {
@@ -15,4 +17,18 @@ export class Cars extends Model {
 
     @Column
     año: Number;
-}
+
+    @ForeignKey(() => Cars_Brand)
+    @Column
+    marca_id: Number;
+
+    @BelongsTo(() => Cars_Brand)
+    marca: Cars_Brand;
+
+    @ForeignKey(() => Cars_Model)
+    @Column
+    modelo_id: Number;
+
+    @BelongsTo(() => Cars_Model)
+    modelo: Cars_Model;
+}   

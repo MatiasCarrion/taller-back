@@ -1,5 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
+import { Cars_Brand } from './car_brand/model/car_brand.model';
+import { Cars_Model } from './car_model/model/car_model.model';
 import { CreateCarDto } from './dto/create-car.dto';
 import { UpdateCarDto } from './dto/update-car.dto';
 import { Cars } from './model/cars.model';
@@ -17,7 +19,12 @@ export class CarsService {
   }
 
   findAll() {
-    return this.carsModel.findAll();
+    return this.carsModel.findAll({
+      include: [
+        {model: Cars_Brand},
+        { model: Cars_Model}
+      ]
+    });
   }
 
   findOne(id: number) {

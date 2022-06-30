@@ -3,6 +3,8 @@ import { SequelizeModule } from '@nestjs/sequelize';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { CarsModule } from './cars/cars.module';
+import { Cars_Brand } from './cars/car_brand/model/car_brand.model';
+import { Cars_Model } from './cars/car_model/model/car_model.model';
 import { Cars } from './cars/model/cars.model';
 
 @Module({
@@ -15,8 +17,9 @@ import { Cars } from './cars/model/cars.model';
       password: 'Matiasepam2022',
       database: 'taller',
       autoLoadModels: true,
+      // synchronize: true,
       sync: {force: true},
-      models: [Cars],
+      models: [Cars, Cars_Brand, Cars_Model],
     }),
     CarsModule],
   controllers: [AppController],
