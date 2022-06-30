@@ -1,15 +1,23 @@
 import { Injectable } from '@nestjs/common';
+import { InjectModel } from '@nestjs/sequelize';
 import { CreateOwnerDto } from './dto/create-owner.dto';
 import { UpdateOwnerDto } from './dto/update-owner.dto';
+import { Owner } from './model/owner.model';
 
 @Injectable()
 export class OwnersService {
+
+  constructor(
+    @InjectModel(Owner)
+    private ownerModel: typeof Owner,
+  ){}
+
   create(createOwnerDto: CreateOwnerDto) {
     return 'This action adds a new owner';
   }
 
   findAll() {
-    return `This action returns all owners`;
+    return this.ownerModel.findAll();
   }
 
   findOne(id: number) {
