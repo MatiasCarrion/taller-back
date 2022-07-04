@@ -1,5 +1,6 @@
-import { AllowNull, AutoIncrement, BelongsTo, Column, ForeignKey, Model, PrimaryKey, Table } from 'sequelize-typescript';
+import { AllowNull, AutoIncrement, BelongsTo, Column, ForeignKey, HasMany, Model, PrimaryKey, Table } from 'sequelize-typescript';
 import { Cars } from 'src/cars/model/cars.model';
+import { DetailTransaction } from '../detail_transaction/model/detail-transaction.model';
 
 @Table
 export class Transaction extends Model {
@@ -24,5 +25,6 @@ export class Transaction extends Model {
     @BelongsTo(() => Cars)
     auto: Cars;
 
-
+    @HasMany(() => DetailTransaction)
+    details_transactions: DetailTransaction
 }   
