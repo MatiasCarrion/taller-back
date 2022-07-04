@@ -1,4 +1,5 @@
-import { AllowNull, AutoIncrement, Column, Model, PrimaryKey, Table } from 'sequelize-typescript';
+import { AllowNull, AutoIncrement, BelongsTo, Column, ForeignKey, Model, PrimaryKey, Table } from 'sequelize-typescript';
+import { Cars } from 'src/cars/model/cars.model';
 
 @Table
 export class Transaction extends Model {
@@ -15,5 +16,13 @@ export class Transaction extends Model {
     @AllowNull(false)
     @Column
     observacion: string;
+
+    @ForeignKey(() => Cars)
+    @Column
+    auto_id: Number;
+
+    @BelongsTo(() => Cars)
+    auto: Cars;
+
 
 }   

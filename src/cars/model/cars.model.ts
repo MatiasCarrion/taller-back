@@ -1,5 +1,6 @@
-import { AllowNull, AutoIncrement, BelongsTo, Column, ForeignKey, HasOne, Model, PrimaryKey, Table, Unique } from 'sequelize-typescript';
+import { AllowNull, AutoIncrement, BelongsTo, Column, ForeignKey, HasMany, HasOne, Model, PrimaryKey, Table, Unique } from 'sequelize-typescript';
 import { Owner } from 'src/owners/model/owner.model';
+import { Transaction } from 'src/transaction/model/transaction.model';
 import { Cars_Brand } from '../car_brand/model/car_brand.model';
 import { Cars_Model } from '../car_model/model/car_model.model';
 
@@ -39,4 +40,7 @@ export class Cars extends Model {
 
     @BelongsTo(() => Owner)
     propietario: Owner;
+
+    @HasMany(() => Transaction)
+    transactions: Transaction
 }   
