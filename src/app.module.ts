@@ -8,6 +8,8 @@ import { Cars_Model } from './cars/car_model/model/car_model.model';
 import { Cars } from './cars/model/cars.model';
 import { Owner } from './owners/model/owner.model';
 import { OwnersModule } from './owners/owners.module';
+import { Services } from './services/model/services.model';
+import { ServicesModule } from './services/services.module';
 
 @Module({
   imports: [
@@ -20,12 +22,14 @@ import { OwnersModule } from './owners/owners.module';
       database: 'taller',
       autoLoadModels: true,
       // synchronize: true,
-      sync: {force: true},
-      models: [Cars, Cars_Brand, Cars_Model, Owner],
+      sync: { force: true },
+      models: [Cars, Cars_Brand, Cars_Model, Owner, Services],
     }),
     CarsModule,
-    OwnersModule],
+    OwnersModule,
+    ServicesModule
+  ],
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule { }
