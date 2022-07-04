@@ -10,6 +10,8 @@ import { Owner } from './owners/model/owner.model';
 import { OwnersModule } from './owners/owners.module';
 import { Services } from './services/model/services.model';
 import { ServicesModule } from './services/services.module';
+import { Transaction } from './transaction/model/transaction.model';
+import { TransactionModule } from './transaction/transaction.module';
 
 @Module({
   imports: [
@@ -23,11 +25,12 @@ import { ServicesModule } from './services/services.module';
       autoLoadModels: true,
       // synchronize: true,
       sync: { force: true },
-      models: [Cars, Cars_Brand, Cars_Model, Owner, Services],
+      models: [Cars, Cars_Brand, Cars_Model, Owner, Services, Transaction],
     }),
     CarsModule,
     OwnersModule,
-    ServicesModule
+    ServicesModule,
+    TransactionModule
   ],
   controllers: [AppController],
   providers: [AppService],
