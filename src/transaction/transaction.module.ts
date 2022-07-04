@@ -8,6 +8,6 @@ import { Transaction } from './model/transaction.model';
 @Module({
   controllers: [TransactionController],
   providers: [TransactionService],
-  imports: [DetailTransactionModule, SequelizeModule.forFeature([Transaction])]
+  imports: [SequelizeModule.forFeature([Transaction]), DetailTransactionModule]
 })
 export class TransactionModule {}
