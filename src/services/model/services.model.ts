@@ -1,4 +1,5 @@
-import { AllowNull, AutoIncrement, Column, Model, PrimaryKey, Table } from 'sequelize-typescript';
+import { AllowNull, AutoIncrement, Column, HasMany, Model, PrimaryKey, Table } from 'sequelize-typescript';
+import { DetailTransaction } from 'src/transaction/detail_transaction/model/detail-transaction.model';
 
 @Table
 export class Services extends Model {
@@ -18,5 +19,8 @@ export class Services extends Model {
     @AllowNull(false)
     @Column
     costo: number;
+
+    @HasMany(() => DetailTransaction)
+    details_transactions : DetailTransaction
 
 }   

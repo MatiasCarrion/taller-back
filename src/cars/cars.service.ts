@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
+import { Services } from 'src/services/model/services.model';
 import { DetailTransaction } from 'src/transaction/detail_transaction/model/detail-transaction.model';
 import { Transaction } from 'src/transaction/model/transaction.model';
 import { Cars_Brand } from './car_brand/model/car_brand.model';
@@ -25,7 +26,7 @@ export class CarsService {
       include: [
         { model: Cars_Brand },
         { model: Cars_Model },
-        { model: Transaction, include: [ { model: DetailTransaction}] }
+        { model: Transaction, include: [ { model: DetailTransaction , include: [ { model: Services } ]}] }
       ]
     });
   }

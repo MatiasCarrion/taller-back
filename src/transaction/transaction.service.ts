@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
+import { Services } from 'src/services/model/services.model';
 import { DetailTransaction } from './detail_transaction/model/detail-transaction.model';
 import { CreateTransactionDto } from './dto/create-transaction.dto';
 import { UpdateTransactionDto } from './dto/update-transaction.dto';
@@ -20,7 +21,7 @@ constructor(
   findAll() {
     return this.transactionModel.findAll({
       include: [
-        { model: DetailTransaction}
+        { model: DetailTransaction , include: [ { model: Services} ]}
       ]
     });
   }
