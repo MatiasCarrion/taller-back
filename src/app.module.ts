@@ -1,4 +1,5 @@
-import { Module } from '@nestjs/common';
+import { All, Module } from '@nestjs/common';
+import { RouterModule } from '@nestjs/core';
 import { SequelizeModule } from '@nestjs/sequelize';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
