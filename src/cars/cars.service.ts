@@ -1,5 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
+import { where } from 'sequelize/types';
+import { Owner } from 'src/owners/model/owner.model';
 import { Services } from 'src/services/model/services.model';
 import { DetailTransaction } from 'src/transaction/detail_transaction/model/detail-transaction.model';
 import { Transaction } from 'src/transaction/model/transaction.model';
@@ -26,13 +28,22 @@ export class CarsService {
       include: [
         { model: Cars_Brand },
         { model: Cars_Model },
+        { model: Owner },
         { model: Transaction, include: [ { model: DetailTransaction , include: [ { model: Services } ]}] }
       ]
     });
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} car`;
+    return this.carsModel.findOne({
+      where: {id: id},
+      include: [
+        { model: Cars_Brand },
+        { model: Cars_Model },
+        { model: Owner },
+        { model: Transaction, include: [ { model: DetailTransaction , include: [ { model: Services } ]}] }
+      ]
+    });;
   }
 
   update(id: number, updateCarDto: UpdateCarDto) {
