@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
+import { Cars_Model } from '../car_model/model/car_model.model';
 import { CreateCarBrandDto } from './dto/create-car_brand.dto';
 import { UpdateCarBrandDto } from './dto/update-car_brand.dto';
 import { Cars_Brand } from './model/car_brand.model';
@@ -9,7 +10,7 @@ export class CarBrandService {
 
   constructor(
     @InjectModel(Cars_Brand)
-    private carsBrandModel: typeof Cars_Brand,
+    private carsBrandModel: typeof Cars_Brand
   ) {}
 
   create(createCarBrandDto: CreateCarBrandDto) {
@@ -17,7 +18,11 @@ export class CarBrandService {
   }
 
   findAll() {
-    return this.carsBrandModel.findAll();
+    return this.carsBrandModel.findAll({
+      include: [
+        {model: Cars_Model}
+      ]
+    });
   }
 
   findOne(id: number) {
