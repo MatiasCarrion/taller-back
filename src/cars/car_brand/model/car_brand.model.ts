@@ -1,4 +1,4 @@
-import { AllowNull, AutoIncrement, BelongsTo, Column, ForeignKey, HasMany, HasOne, Model, PrimaryKey, Table, Unique } from 'sequelize-typescript';
+import { AllowNull, AutoIncrement, Column, HasMany, Model, PrimaryKey, Table, Unique } from 'sequelize-typescript';
 import { Cars_Model } from 'src/cars/car_model/model/car_model.model';
 import { Cars } from 'src/cars/model/cars.model';
 

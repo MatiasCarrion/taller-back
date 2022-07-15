@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
-import { where } from 'sequelize/types';
 import { Owner } from 'src/owners/model/owner.model';
 import { Services } from 'src/services/model/services.model';
 import { DetailTransaction } from 'src/transaction/detail_transaction/model/detail-transaction.model';

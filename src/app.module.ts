@@ -26,7 +26,7 @@ import { TransactionModule } from './transaction/transaction.module';
       database: 'taller',
       autoLoadModels: true,
       // synchronize: true,
-      sync: { force: true },
+      sync: { force: false },
       models: [Cars, Cars_Brand, Cars_Model, Owner, Services, Transaction, DetailTransaction],
     }),
     CarsModule,
