@@ -18,8 +18,8 @@ export class CarsService {
     private carsModel: typeof Cars,
   ) {}
 
-  create(createCarDto: CreateCarDto) {
-    return 'This action adds a new car';
+  create(data: any) {
+    return this.carsModel.create(data);
   }
 
   findAll() {
@@ -45,8 +45,8 @@ export class CarsService {
     });;
   }
 
-  update(id: number, updateCarDto: UpdateCarDto) {
-    return `This action updates a #${id} car`;
+  update(id: number, data: any) {
+    return this.carsModel.update(data, {where: {id: id} })  
   }
 
   remove(id: number) {

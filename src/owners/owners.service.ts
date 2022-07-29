@@ -19,7 +19,7 @@ export class OwnersService {
 
   findAll() {
     return this.ownerModel.findAll({
-      include: [{model: Cars}]
+      // include: [{model: Cars}]
     });
   }
 
